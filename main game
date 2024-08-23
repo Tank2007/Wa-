@@ -1,0 +1,43 @@
+import random
+
+def number_guessing_game():
+    # Define the range for the number
+    lower_bound = 1
+    upper_bound = 100
+    
+    # Generate a random number between lower_bound and upper_bound
+    number_to_guess = random.randint(lower_bound, upper_bound)
+    
+    print("Welcome to the Number Guessing Game!")
+    print(f"I'm thinking of a number between {lower_bound} and {upper_bound}.")
+    
+    # Initialize the number of attempts
+    attempts = 0
+    
+    while True:
+        # Get the user's guess
+        guess = input(f"Enter your guess (between {lower_bound} and {upper_bound}): ")
+        
+        # Convert the guess to an integer
+        try:
+            guess = int(guess)
+        except ValueError:
+            print("Please enter a valid number.")
+            continue
+        
+        # Increment the number of attempts
+        attempts += 1
+        
+        # Check if the guess is correct
+        if guess < lower_bound or guess > upper_bound:
+            print(f"Please guess a number between {lower_bound} and {upper_bound}.")
+        elif guess < number_to_guess:
+            print("Too low! Try again.")
+        elif guess > number_to_guess:
+            print("Too high! Try again.")
+        else:
+            print(f"Congratulations! You've guessed the number {number_to_guess} in {attempts} attempts.")
+            break
+
+# Run the game
+number_guessing_game()
